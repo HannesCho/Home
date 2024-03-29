@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ThemeSwitch from "./themeSwitch";
 
 interface INavRoute {
   name: string;
@@ -35,6 +36,7 @@ export default function Navigation() {
           </li>
         ))}
       </ul>
+      <ThemeSwitch />
     </nav>
   );
 }
