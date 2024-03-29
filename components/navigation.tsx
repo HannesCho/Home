@@ -2,17 +2,26 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+interface INavRoute {
+  name: string;
+  href: string;
+}
+interface INavRouteList extends Array<INavRoute> {}
+
 export default function Navigation() {
   const path = usePathname();
+
+  const routesList: INavRouteList = [
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Skills", href: "/skills" },
+    { name: "Projects", href: "/projects" },
+  ];
+
   return (
     <nav>
       <ul className="flex items-center justify-end p-5 gap-x-32">
-        {[
-          { name: "Home", href: "/" },
-          { name: "About", href: "/about" },
-          { name: "Skills", href: "/skills" },
-          { name: "Projects", href: "/projects" },
-        ].map((item: { name: string; href: string }, index) => (
+        {routesList.map((item: { name: string; href: string }, index) => (
           <li key={index} className="flex items-center justify-center">
             <div
               className={
